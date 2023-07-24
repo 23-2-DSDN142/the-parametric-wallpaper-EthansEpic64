@@ -6,7 +6,7 @@ let rect_height = 20;
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(GRID_WALLPAPER);
   pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(true); //set this to false when you're ready to print
+  pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
   pWallpaper.grid_settings.cell_width  = 200;
@@ -21,16 +21,20 @@ function wallpaper_background() {
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
   rect(40 ,40, rect_width, rect_height);
 
-  let Brown = color (82, 36, 34);
+  let Brown = color (1, 210, 2);
+  let blue = color (40, 120, 252);
+  let red = color (100,3,210);
   
-  fill(252,3,3); //red
+  fill(red); 
+  noStroke();
   beginShape();
   vertex(0,50)
   vertex(50,0)
   vertex(0,0)
   endShape();
 
-  fill(161, 3, 252); //purple
+  fill(blue); 
+  noStroke();
   beginShape();
   vertex(0,50);
   vertex(0,100);
@@ -38,7 +42,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   vertex(50,0);
   endShape();
 
-  fill(3, 252, 24); //green
+  fill(red); 
+  noStroke();
   beginShape();
   vertex(0,100);
   vertex(0,150);
@@ -46,7 +51,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   vertex(100,0);
   endShape();
 
-  fill(3, 7, 252); //blue
+  fill(blue);
+  noStroke();
   beginShape();
   vertex(0,150);
   vertex(0,200);
@@ -54,7 +60,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   vertex(150,0);
   endShape();
 
-  fill(252, 227, 3); //yellow
+  fill(red); 
+  noStroke();
   beginShape();
   vertex(0,200);
   vertex(200,0);
@@ -62,7 +69,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   vertex(50,200);
   endShape();
 
-  fill(252, 3, 252); //pink
+  fill(blue); 
+  noStroke();
   beginShape();
   vertex(200,50);
   vertex(50,200);
@@ -70,7 +78,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   vertex(200,100);
   endShape();
 
-  fill(252, 123, 3); //orange
+  fill(red);
+  noStroke();
   beginShape();
   vertex(200,100);
   vertex(100,200);
@@ -78,7 +87,8 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   vertex(200,150);
   endShape();
 
-  fill(3, 252, 252); //lightblue
+  fill(blue);
+  noStroke();
   beginShape();
   vertex(200,150);
   vertex(150,200);
@@ -87,18 +97,22 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   endShape();
 
   fill(Brown);
+  stroke(0);
   rect(55, 120, 130, 30, 20); // dog body
   
   fill(Brown);
+  stroke(0);
   ellipse(50, 120, 40, 35); //head
 
   fill(0,0,0); //black
+  stroke(0);
   ellipse(40, 115, 2, 2); //eyes
   ellipse(50, 115, 2, 2);
 
   line(40,120, 50, 120) // mouth
 
-  fill(Brown); 
+  fill(Brown);
+  stroke(0); 
   beginShape(); //left ear
   vertex(40, 104);
   vertex(34, 120);
@@ -108,6 +122,7 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   endShape();
 
   fill(Brown); 
+  stroke(0);
   beginShape(); //right ear
   vertex(60, 104);
   vertex(65, 120);
@@ -117,18 +132,23 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   endShape();
 
   fill(Brown);
+  stroke(0);
   dogLeg(70,150); //left front leg
 
   fill(Brown);
+  stroke(0);
   dogLeg(80,150); //right front leg
 
   fill(Brown);
+  stroke(0);
   dogLeg(150,150); //left back leg
   
   fill(Brown);
+  stroke(0);
   dogLeg(160,150); //right back leg
 
   fill(Brown);
+  stroke(0);
   beginShape(); //tail
   vertex(170,120);
   vertex(180,100);
