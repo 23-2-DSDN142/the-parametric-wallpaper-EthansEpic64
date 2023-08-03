@@ -1,11 +1,11 @@
 //your parameter variables go here!
 let rect_width  = 20;
 let rect_height = 20;
-let bg_mode = 3;
+let bg_mode = 2;
 
 
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.output_mode(GLIDE_WALLPAPER);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
@@ -24,7 +24,6 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
 
   let Brown = color (232, 219, 153);
 
-  
   if (bg_mode == 1){
     bgStripes()
   }
@@ -38,22 +37,19 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   }
 
   fill(Brown);
-  //stroke(0);
   rect(55, 120, 130, 30, 20); // dog body
   
   fill(Brown);
-  //stroke(0);
   ellipse(50, 120, 40, 35); //head
 
   fill(0,0,0); //black
   stroke(0);
-  ellipse(40, 115, 2, 2); //eyes
-  ellipse(50, 115, 2, 2);
+  ellipse(43, 115, 2, 2); //eyes
+  ellipse(53, 115, 2, 2);
 
-  line(40,120, 50, 120) // mouth
+  line(43,120, 53, 120) // mouth
 
-  fill(130, 124, 91);
-  //stroke(0); 
+  fill(130, 124, 91); 
   beginShape(); //left ear
   vertex(40, 104);
   vertex(34, 120);
@@ -63,7 +59,6 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   endShape();
 
   fill(130, 124, 91); 
-  //stroke(0);
   beginShape(); //right ear
   vertex(60, 104);
   vertex(65, 120);
@@ -72,31 +67,23 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   vertex(60, 104);
   endShape();
 
+  fill(Brown); //tail
+  bezier(150,100,175,122,160,100,100,100);
+  bezier(145,100,170,121,160,100,100,100);
+
+
   fill(Brown);
   noStroke();
- // stroke(0);
   dogLeg(70,150); //left front leg
 
   fill(Brown);
-  //stroke(0);
   dogLeg(80,150); //right front leg
 
   fill(Brown);
-  //stroke(0);
   dogLeg(150,150); //left back leg
   
   fill(Brown);
-  //stroke(0);
   dogLeg(160,150); //right back leg
-
-  noFill();
-  stroke(0);
-//tail
-  //vertex(170,120);
-  //vertex(180,100);
-  //vertex(177,122);
-
-
 }
 
 function dogLeg(legx,legy){
