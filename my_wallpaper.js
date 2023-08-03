@@ -1,11 +1,16 @@
 //your parameter variables go here!
 let rect_width  = 20;
 let rect_height = 20;
-let bg_mode = 2;
+let bg_mode = 2; //this changes the pattern of the background stripes (1, 2 or 3)
+let dog_amount = 4;
+let dogSize = 100;
+let dogX = 100;
+let dogY = 100;
+let dogLength = 100;
 
 
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(GLIDE_WALLPAPER);
+  pWallpaper.output_mode(GRID_WALLPAPER);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
@@ -22,8 +27,6 @@ function wallpaper_background() {
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
   rect(40 ,40, rect_width, rect_height);
 
-  let Brown = color (232, 219, 153);
-
   if (bg_mode == 1){
     bgStripes()
   }
@@ -36,55 +39,20 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
     bgSquares()
   }
 
-  fill(Brown);
-  rect(55, 120, 130, 30, 20); // dog body
-  
-  fill(Brown);
-  ellipse(50, 120, 40, 35); //head
+  if (dog_amount == 1){
+    drawDog(10,80,dogLength,dogSize);
+  }
 
-  fill(0,0,0); //black
-  stroke(0);
-  ellipse(43, 115, 2, 2); //eyes
-  ellipse(53, 115, 2, 2);
+  if (dog_amount == 2){
+    drawDog(110,10,dogLength,dogSize);
+    drawDog(85,110,dogLength,dogSize);
+  }
 
-  line(43,120, 53, 120) // mouth
-
-  fill(130, 124, 91); 
-  beginShape(); //left ear
-  vertex(40, 104);
-  vertex(34, 120);
-  vertex(25, 117);
-  vertex(38, 103);
-  vertex(40, 104);
-  endShape();
-
-  fill(130, 124, 91); 
-  beginShape(); //right ear
-  vertex(60, 104);
-  vertex(65, 120);
-  vertex(74, 117);
-  vertex(62, 104);
-  vertex(60, 104);
-  endShape();
-
-  fill(Brown); //tail
-  bezier(150,100,175,122,160,100,100,100);
-  bezier(145,100,170,121,160,100,100,100);
-
-
-  fill(Brown);
-  noStroke();
-  dogLeg(70,150); //left front leg
-
-  fill(Brown);
-  dogLeg(80,150); //right front leg
-
-  fill(Brown);
-  dogLeg(150,150); //left back leg
-  
-  fill(Brown);
-  dogLeg(160,150); //right back leg
-}
+  if (dog_amount == 4){
+    drawDog(10,20,180,dogSize);
+    drawDog(110,120,100,dogSize)
+  }
+} 
 
 function dogLeg(legx,legy){
   beginShape(); //Leg
@@ -95,6 +63,66 @@ function dogLeg(legx,legy){
   vertex(legx+2, legy+23);
   vertex(legx+4, legy);
   endShape();
+}
+
+function drawDog(dogX,dogY,dogLength,scaler){
+  let Brown = color (232, 219, 153);
+  
+  fill(Brown);
+  noStroke();
+  rect(dogX-45, dogY+20, dogLength*1.3, scaler*0.3, scaler*0.2); // dog body
+  noStroke();
+  fill(Brown);
+  ellipse(dogX-50, dogY+20, scaler*0.4, scaler*0.35); //head
+
+  fill(0,0,0); //black
+  stroke(0);
+  strokeWeight(scaler*0.01);
+  ellipse(dogX-57, dogY+15, scaler*0.02, scaler*0.02); //eyes
+  ellipse(dogX-47, dogY+15, scaler*0.02, scaler*0.02);
+
+  strokeWeight(scaler*0.01);
+  line(dogX-57,dogY+20, dogX-47, dogY+20) // mouth
+
+  fill(130, 124, 91); 
+  strokeWeight(scaler*0.01);
+  beginShape(); //left ear
+  vertex(dogX-60, dogY+4);
+  vertex(dogX-66, dogY+20);
+  vertex(dogX-75, dogY+17);
+  vertex(dogX-62, dogY+3);
+  vertex(dogX-60, dogY+4);
+  endShape();
+
+  fill(130, 124, 91); 
+  strokeWeight(scaler*0.01);
+  beginShape(); //right ear
+  vertex(dogX-40, dogY+4);
+  vertex(dogX-35, dogY+20);
+  vertex(dogX-26, dogY+17);
+  vertex(dogX-38, dogY+4);
+  vertex(dogX-40, dogY+4);
+  endShape();
+
+  noFill(); //tail
+  strokeWeight(scaler*0.06);
+  stroke(Brown);
+  beginShape();
+  bezier(dogX+75, dogY+22, dogX+76, dogY+17, dogX+76, dogY+10, dogX+66, dogY+4);
+  endShape(); 
+
+  fill(Brown);
+  noStroke();
+  dogLeg(dogX-30,dogY+49); //left front leg
+
+  fill(Brown);
+  dogLeg(dogX-20,dogY+49); //right front leg
+
+  fill(Brown);
+  dogLeg(dogX+dogLength-40,dogY+49); //left back leg
+  
+  fill(Brown);
+  dogLeg(dogX+dogLength-30,dogY+49); //right back leg
 }
 
 function bgStripes(){
