@@ -1,12 +1,10 @@
 //your parameter variables go here!
 let rect_width  = 20;
 let rect_height = 20;
-let bg_mode = 2; //this changes the pattern of the background stripes (1, 2 or 3)
-let dog_amount = 4;
-let dogSize = 100;
-let dogX = 100;
-let dogY = 100;
-let dogLength = 100;
+let bg_mode = 1; //this changes the pattern of the background stripes (1, 2 or 3)
+let dog_amount = 4; //this changes amount of Bert's on screen (1,2, 3 or 4 (4 makes Bert long)
+let dogSize = 100 //this changes the scale of Bert, cant figure out how to make everthing smaller, bigger works tho to a certain degree
+let dogLength = 100; //this changes the length of Bert
 
 
 function setup_wallpaper(pWallpaper) {
@@ -17,7 +15,7 @@ function setup_wallpaper(pWallpaper) {
   //Grid settings
   pWallpaper.grid_settings.cell_width  = 200;
   pWallpaper.grid_settings.cell_height = 200;
-  pWallpaper.grid_settings.row_offset  = 100;
+  pWallpaper.grid_settings.row_offset  = 50;
 }
 
 function wallpaper_background() {
@@ -40,19 +38,70 @@ function my_symbol() { // do not rename this function. Treat this similarly to a
   }
 
   if (dog_amount == 1){
-    drawDog(10,80,dogLength,dogSize);
+    drawDog(100,80,dogLength,dogSize);
+    dogBowl(130,30);
+    dogBone(50,50);
   }
 
   if (dog_amount == 2){
-    drawDog(110,10,dogLength,dogSize);
-    drawDog(85,110,dogLength,dogSize);
+    drawDog(110,22,dogLength,dogSize);
+    drawDog(85,125,dogLength,dogSize);
+    dogBowl(3,92);
+    dogBowl(100,92);
+    dogBone(57,102);
+    dogBone(160,102);
+    dogBone(10,6);
+    dogBowl(58,-4);
+    dogBone(110,6);
+    dogBowl(154,-4)
+  }
+
+  if (dog_amount == 3){
+    drawDog(70,60,dogLength,dogSize);
+    drawDog(32,120,dogLength,dogSize);
+    drawDog(110,5,dogLength,dogSize);
+    dogBone(160,95);
+    dogBowl(127,150);
+    dogBone(8,30);
   }
 
   if (dog_amount == 4){
-    drawDog(10,20,180,dogSize);
-    drawDog(110,120,100,dogSize)
+    drawDog(10,70,137,dogSize);
   }
-} 
+
+}
+
+function dogBone(boneX,boneY){
+  let White = color (232, 217, 193);
+  fill(White);
+  stroke(0);
+  strokeWeight(1);
+  beginShape();
+  ellipse(boneX+0.5,boneY+1.5,6,6);
+  ellipse(boneX+3,boneY-3,6,6);
+  ellipse(boneX+25,boneY+12,6,6);
+  ellipse(boneX+28,boneY+8,6,6);
+  vertex(boneX+3,boneY+2);
+  vertex(boneX+22,boneY+11);
+  vertex(boneX+26,boneY+7);
+  vertex(boneX+6,boneY-2);
+  vertex(boneX+3,boneY+2);
+  endShape();
+}
+
+function dogBowl(bowlX,bowlY){
+  let Red = color (209, 39, 27);
+  fill(Red);
+  stroke(0);
+  strokeWeight(1);
+  beginShape();
+  vertex(bowlX+5,bowlY+5);
+  vertex(bowlX+42,bowlY+20);
+  vertex(bowlX+44,bowlY+32);
+  vertex(bowlX-4,bowlY+12);
+  vertex(bowlX+5,bowlY+5);
+  endShape();
+}
 
 function dogLeg(legx,legy){
   beginShape(); //Leg
@@ -108,7 +157,7 @@ function drawDog(dogX,dogY,dogLength,scaler){
   strokeWeight(scaler*0.06);
   stroke(Brown);
   beginShape();
-  bezier(dogX+75, dogY+22, dogX+76, dogY+17, dogX+76, dogY+10, dogX+66, dogY+4);
+  bezier(dogX+dogLength-25, dogY+22, dogX+dogLength-24, dogY+17, dogX+dogLength-24, dogY+10, dogX+dogLength-34, dogY+4);
   endShape(); 
 
   fill(Brown);
