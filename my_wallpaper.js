@@ -1,28 +1,27 @@
 //your parameter variables go here!
 let rect_width  = 20;
 let rect_height = 20;
-let bg_mode = 3; //this changes the pattern of the background stripes (1, 2 or 3)
-let dog_amount = 4; //this changes amount of Bert's on screen (1,2, 3 or 4 (4 makes Bert long)
+let bg_mode = 1; //this changes the pattern of the background stripes (1, 2 or 3)
+let dog_amount = 1; //this changes amount of Bert's on screen (1,2, 3 or 4 (4 makes Bert long)
 let dogSize = 100; //this changes the scale of Bert, cant figure out how to make everthing smaller, bigger works tho to a certain degree
 let dogLength = 100; //this changes the length of Bert
 let colours = 2; //this changes the colour pallette of the entire wallpaper
 
 
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(GRID_WALLPAPER);
-  pWallpaper.resolution(FIT_TO_SCREEN);
+  pWallpaper.output_mode(GLIDE_WALLPAPER);
+  pWallpaper.resolution(NINE_LANDSCAPE);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
   pWallpaper.grid_settings.cell_width  = 200;
   pWallpaper.grid_settings.cell_height = 200;
-  pWallpaper.grid_settings.row_offset  = 50;
+  pWallpaper.grid_settings.row_offset  = 100;
 }
 
 function wallpaper_background() {
   background(240, 255, 240); //light honeydew green colour
 }
-
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
   rect(40 ,40, rect_width, rect_height);
 
